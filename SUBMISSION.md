@@ -1,5 +1,16 @@
 # Mini Admin Dashboard Submission
 
+
+# Login credentials
+## Demo Login
+
+Use the following account to review the admin dashboard:
+
+Email: admin22@gmail.com
+Password: Admin@123
+
+This is a temporary evaluation account created for project review.
+
 ## Architecture
 
 - Frontend: Vite + React JavaScript app in `src/`

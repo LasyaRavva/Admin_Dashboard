@@ -162,6 +162,7 @@ function LoadingScreen({ label }) {
 function LoginScreen({ onAuthenticated }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -216,14 +217,26 @@ function LoginScreen({ onAuthenticated }) {
 
           <label>
             <span>Password</span>
-            <input
-              autoComplete="current-password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
+            <div className="password-field">
+              <input
+                autoComplete="current-password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+              <button
+                className="password-toggle"
+                type="button"
+                onClick={() => setShowPassword((current) => !current)}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-pressed={showPassword}
+                title={showPassword ? 'Hide password' : 'Show password'}
+              >
+                <EyeIcon crossed={showPassword} />
+              </button>
+            </div>
           </label>
 
           {errorMessage ? <p className="form-error">{errorMessage}</p> : null}
@@ -771,5 +784,21 @@ function Toast({ message, tone }) {
     <div className={tone === 'error' ? 'toast toast--error' : 'toast'} role="status" aria-live="polite">
       {message}
     </div>
+  )
+}
+
+function EyeIcon({ crossed = false }) {
+  return crossed ? (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 3l18 18" />
+      <path d="M10.6 10.7a2 2 0 0 0 2.7 2.7" />
+      <path d="M9.9 5.1A10.8 10.8 0 0 1 12 4.9c5 0 9.3 3 11 7.1a12.5 12.5 0 0 1-4.2 5.3" />
+      <path d="M6.2 6.3A12.6 12.6 0 0 0 1 12c.9 2.1 2.4 3.9 4.3 5.2" />
+    </svg>
+  ) : (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
   )
 }
