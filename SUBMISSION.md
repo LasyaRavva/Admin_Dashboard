@@ -6,8 +6,8 @@
 
 Use the following account to review the admin dashboard:
 
-Email: admin22@gmail.com
-Password: Admin@123
+*** Email: admin22@gmail.com ***
+*** Password: Admin@123 ***
 
 This is a temporary evaluation account created for project review.
 
